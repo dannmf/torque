@@ -31,4 +31,18 @@ async function atualizarData(id, novaData) {
   await db.query('UPDATE agendamentos SET data_agendamento = ? WHERE id = ?', [novaData, id]);
 }
 
-module.exports = { listarTodos, atualizarData };
+// Insere um novo agendamento associado ao veiculo recebido
+async function cadastrar(veiculoId, dataAgendamento, servico) {
+  const [resultado] = await db.query(
+    'INSERT INTO agendamentos (veiculo_id, data_agendamento, servico) VALUES (?, ?, ?)',
+    [veiculoId, dataAgendamento, servico]
+  );
+  return resultado.insertId;
+}
+
+// Remove um agendamento
+async function excluir(id) {
+  await db.query('DELETE FROM agendamentos WHERE id = ?', [id]);
+}
+
+module.exports = { listarTodos, atualizarData, cadastrar, excluir };

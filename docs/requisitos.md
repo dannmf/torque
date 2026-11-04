@@ -24,17 +24,13 @@ LGPD, e o acesso ao sistema precisa ser controlado por login com expiracao.
   mostrando os dados do veiculo e do cliente relacionados.
 - **RF10** - O sistema deve permitir alterar a data de um agendamento existente.
 
-## Regras de Negocio
+## Requisitos de Infraestrutura
 
-| Codigo | Descricao |
-|--------|-----------|
-| RN01 | O script do banco deve ter pelo menos 3 registros em todas as tabelas, respeitando tipos, PKs e FKs. |
-| RN02 | No login, validar e mostrar mensagem quando a autenticacao falhar. |
-| RN03 | O CPF do cliente deve ser salvo criptografado no banco. |
-| RN04 | A tela principal mostra o nome do usuario logado, links para as outras telas e um botao de sair. |
-| RN05 | Na tela de clientes, o usuario digita um termo, clica em Buscar e a tabela e atualizada so com os registros correspondentes. |
-| RN06 | Na tela de clientes, e possivel editar um cliente e salvar no banco. |
-| RN07 | Na tela de agendamentos, a listagem vem ordenada pela data do agendamento, com todos os dados do cliente e do veiculo. |
-| RN08 | Na tela de agendamentos, e possivel alterar a data de um agendamento e salvar no banco. |
-| RN09 | Ao cadastrar um veiculo, ele deve ser associado a um cliente. |
-| RN10 | O login gera um token JWT com tempo de expiracao. |
+| Item | Descricao |
+|------|-----------|
+| SGBD | MySQL, versao 9.5.0 |
+| Linguagem / Runtime (backend) | JavaScript (Node.js), versao 26.5.0 |
+| Framework web (backend) | Express, versao 4.19.2 |
+| Driver de banco de dados | mysql2, versao 3.11.0 |
+| Frontend 1 | HTML, CSS e JavaScript puros |
+| Frontend 2 | React, versao 18.3.1, com Vite, versao 5.4.0 |

@@ -18,13 +18,15 @@
           <th>Modelo</th>
           <th>Ano</th>
           <th>Cliente</th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="tabelaVeiculos"></tbody>
     </table>
 
-    <h2>Cadastrar veiculo</h2>
+    <h2 id="tituloFormulario">Cadastrar veiculo</h2>
     <form id="formVeiculo">
+      <input type="hidden" id="campoId" />
       <select id="campoCliente" required>
         <option value="">Selecione o cliente</option>
       </select>
@@ -32,7 +34,7 @@
       <input type="text" id="campoMarca" placeholder="Marca" />
       <input type="text" id="campoModelo" placeholder="Modelo" />
       <input type="number" id="campoAno" placeholder="Ano" />
-      <button type="submit">Cadastrar</button>
+      <button type="submit" id="botaoSalvarVeiculo">Cadastrar</button>
     </form>
     <p id="mensagemErro" class="erro"></p>
   </div>

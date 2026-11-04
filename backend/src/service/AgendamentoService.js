@@ -12,4 +12,15 @@ async function atualizarData(id, novaData) {
   return { id, data_agendamento: novaData };
 }
 
-module.exports = { listar, atualizarData };
+// Cadastra um agendamento associado a um veiculo
+async function cadastrar(veiculoId, dataAgendamento, servico) {
+  const id = await AgendamentoRepository.cadastrar(veiculoId, dataAgendamento, servico);
+  return { id, veiculo_id: veiculoId, data_agendamento: dataAgendamento, servico };
+}
+
+// Remove um agendamento
+async function excluir(id) {
+  await AgendamentoRepository.excluir(id);
+}
+
+module.exports = { listar, atualizarData, cadastrar, excluir };

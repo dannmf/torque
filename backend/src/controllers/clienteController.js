@@ -17,4 +17,20 @@ async function atualizar(req, res) {
   res.json(clienteAtualizado);
 }
 
-module.exports = { listar, atualizar };
+// POST /clientes
+async function cadastrar(req, res) {
+  const { nome, cpf, telefone, email } = req.body;
+
+  const cliente = await ClienteService.cadastrar(nome, cpf, telefone, email);
+  res.status(201).json(cliente);
+}
+
+// DELETE /clientes/:id
+async function excluir(req, res) {
+  const { id } = req.params;
+
+  await ClienteService.excluir(id);
+  res.json({ mensagem: 'Cliente removido' });
+}
+
+module.exports = { listar, atualizar, cadastrar, excluir };

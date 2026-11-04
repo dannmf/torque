@@ -41,9 +41,9 @@ CREATE TABLE agendamentos (
 
 -- Usuario de teste: admin@oficina.com / 123456
 INSERT INTO usuarios (nome, email, senha) VALUES
-  ('Administrador', 'admin@oficina.com', '$2a$10$g1dHRRwXZeglW8NFG/0jt.D.gmG1ysaB1rx/AGZIQEfjAXYyve.k2'),
-  ('Carlos Mecanico', 'carlos@oficina.com', '$2a$10$g1dHRRwXZeglW8NFG/0jt.D.gmG1ysaB1rx/AGZIQEfjAXYyve.k2'),
-  ('Fernanda Atendente', 'fernanda@oficina.com', '$2a$10$g1dHRRwXZeglW8NFG/0jt.D.gmG1ysaB1rx/AGZIQEfjAXYyve.k2');
+  ('Administrador', 'admin@oficina.com', '$2a$10$3jLjOS4/vbPxxrSOttbC6uDgmSSbhOu8QS/.iW5Ik4uyUhEvi8CFq'),
+  ('Carlos Mecanico', 'carlos@oficina.com', '$2a$10$3jLjOS4/vbPxxrSOttbC6uDgmSSbhOu8QS/.iW5Ik4uyUhEvi8CFq'),
+  ('Fernanda Atendente', 'fernanda@oficina.com', '$2a$10$3jLjOS4/vbPxxrSOttbC6uDgmSSbhOu8QS/.iW5Ik4uyUhEvi8CFq');
 
 -- CPF salvo criptografado [RN03]
 INSERT INTO clientes (nome, cpf, telefone, email) VALUES

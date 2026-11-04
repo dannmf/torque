@@ -28,4 +28,16 @@ async function atualizar(id, nome, cpf, telefone, email) {
   return { ...clienteAtualizado, cpf: descriptografarCpf(clienteAtualizado.cpf) };
 }
 
-module.exports = { listar, atualizar };
+// Cadastra um cliente, criptografando o CPF antes de salvar [RN03]
+async function cadastrar(nome, cpf, telefone, email) {
+  const cpfCriptografado = criptografarCpf(cpf);
+  const id = await ClienteRepository.cadastrar(nome, cpfCriptografado, telefone, email);
+  return { id, nome, cpf, telefone, email };
+}
+
+// Remove um cliente
+async function excluir(id) {
+  await ClienteRepository.excluir(id);
+}
+
+module.exports = { listar, atualizar, cadastrar, excluir };

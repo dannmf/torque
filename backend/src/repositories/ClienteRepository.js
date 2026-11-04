@@ -29,4 +29,18 @@ async function atualizar(id, nome, cpfCriptografado, telefone, email) {
   );
 }
 
-module.exports = { listarTodos, buscarPorNome, buscarPorId, atualizar };
+// Insere um novo cliente
+async function cadastrar(nome, cpfCriptografado, telefone, email) {
+  const [resultado] = await db.query(
+    'INSERT INTO clientes (nome, cpf, telefone, email) VALUES (?, ?, ?, ?)',
+    [nome, cpfCriptografado, telefone, email]
+  );
+  return resultado.insertId;
+}
+
+// Remove um cliente
+async function excluir(id) {
+  await db.query('DELETE FROM clientes WHERE id = ?', [id]);
+}
+
+module.exports = { listarTodos, buscarPorNome, buscarPorId, atualizar, cadastrar, excluir };

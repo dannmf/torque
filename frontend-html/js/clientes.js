@@ -4,6 +4,7 @@ if (!localStorage.getItem('token')) {
 }
 
 const tabelaClientes = document.getElementById('tabelaClientes');
+const formCadastrar = document.getElementById('formCadastrar');
 const formEditar = document.getElementById('formEditar');
 
 // Desenha a tabela com os clientes recebidos
@@ -17,13 +18,24 @@ function desenharTabela(clientes) {
       <td>${cliente.cpf}</td>
       <td>${cliente.telefone ?? ''}</td>
       <td>${cliente.email ?? ''}</td>
-      <td><button class="botaoEditar" data-id="${cliente.id}">Editar</button></td>
+      <td>
+        <button class="botaoEditar" data-id="${cliente.id}">Editar</button>
+        <button class="botaoExcluir secundario" data-id="${cliente.id}">Excluir</button>
+      </td>
     `;
     tabelaClientes.appendChild(linha);
   });
 
   document.querySelectorAll('.botaoEditar').forEach((botao) => {
     botao.addEventListener('click', () => preencherFormulario(clientes, botao.dataset.id));
+  });
+
+  // Remove o cliente escolhido
+  document.querySelectorAll('.botaoExcluir').forEach((botao) => {
+    botao.addEventListener('click', async () => {
+      await apiFetch(`/clientes/${botao.dataset.id}`, { method: 'DELETE' });
+      buscarClientes();
+    });
   });
 }
 
@@ -46,6 +58,22 @@ function preencherFormulario(clientes, id) {
 
 document.getElementById('botaoBuscar').addEventListener('click', () => {
   buscarClientes(document.getElementById('termoBusca').value);
+});
+
+// Cadastra um novo cliente [RN03]
+formCadastrar.addEventListener('submit', async (evento) => {
+  evento.preventDefault();
+
+  const corpo = {
+    nome: document.getElementById('cadastrarNome').value,
+    cpf: document.getElementById('cadastrarCpf').value,
+    telefone: document.getElementById('cadastrarTelefone').value,
+    email: document.getElementById('cadastrarEmail').value,
+  };
+
+  await apiFetch('/clientes', { method: 'POST', body: JSON.stringify(corpo) });
+  formCadastrar.reset();
+  buscarClientes();
 });
 
 // Salva a edicao do cliente [RN06]

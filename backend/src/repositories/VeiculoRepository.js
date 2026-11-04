@@ -16,4 +16,17 @@ async function cadastrar(clienteId, placa, marca, modelo, ano) {
   return resultado.insertId;
 }
 
-module.exports = { listarTodos, cadastrar };
+// Atualiza os dados de um veiculo
+async function atualizar(id, clienteId, placa, marca, modelo, ano) {
+  await db.query(
+    'UPDATE veiculos SET cliente_id = ?, placa = ?, marca = ?, modelo = ?, ano = ? WHERE id = ?',
+    [clienteId, placa, marca, modelo, ano, id]
+  );
+}
+
+// Remove um veiculo
+async function excluir(id) {
+  await db.query('DELETE FROM veiculos WHERE id = ?', [id]);
+}
+
+module.exports = { listarTodos, cadastrar, atualizar, excluir };

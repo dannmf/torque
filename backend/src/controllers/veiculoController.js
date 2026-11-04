@@ -21,4 +21,27 @@ async function cadastrar(req, res) {
   res.status(201).json(resultado);
 }
 
-module.exports = { listar, cadastrar };
+// PUT /veiculos/:id
+async function atualizar(req, res) {
+  const { id } = req.params;
+  const { cliente_id, placa, marca, modelo, ano } = req.body;
+
+  const resultado = await VeiculoService.atualizar(id, cliente_id, placa, marca, modelo, ano);
+
+  // Veiculo sem cliente associado [RN09]
+  if (resultado.erro) {
+    return res.status(400).json({ mensagem: resultado.erro });
+  }
+
+  res.json(resultado);
+}
+
+// DELETE /veiculos/:id
+async function excluir(req, res) {
+  const { id } = req.params;
+
+  await VeiculoService.excluir(id);
+  res.json({ mensagem: 'Veiculo removido' });
+}
+
+module.exports = { listar, cadastrar, atualizar, excluir };
