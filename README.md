@@ -9,22 +9,26 @@ Sem CSS e sem JavaScript no navegador: o servidor preenche os `{{marcadores}}` d
 ## Estrutura
 
 ```
-app.js           BACK: rotas, regras, login, criptografia e SQL
-paginas/         FRONT: HTML puro (login, principal, clientes, veiculos, agendamentos)
-gerar-script.js  gera o database/script.sql
-database/        script.sql
-docs/            roteiro-live-coding.md (material do professor)
+app.js             BACK: rotas, regras, login, criptografia e SQL
+paginas/           FRONT: HTML puro (login, principal, clientes, veiculos, agendamentos)
+gerar-valores.js   imprime o hash da senha e o CPF criptografado para colar no script.sql
+database/          script.sql
+docs/              material do professor:
+                     estrutura-do-codigo.md  explicacao de cada arquivo (contexto)
+                     roteiro-daniel.md       roteiro enxuto pra seguir na live
+                     roteiro-live-coding.md  roteiro detalhado de outro professor
 ```
 
 ## 1. Banco de dados
 
-Com o MySQL rodando, execute:
+Com o MySQL rodando, carregue o `database/script.sql`:
 
-```bash
-mysql -u root -p < database/script.sql
-```
+- **MySQL Workbench:** File > Open SQL Script, abra `database/script.sql` e
+  execute tudo (icone do raio ou Ctrl+Shift+Enter).
+- **Terminal:** `mysql -u root -p < database/script.sql`
 
-(Para gerar o script de novo, por exemplo apos mudar a chave do `.env`: `npm run gerar-script`)
+(Se precisar gerar novos valores, por exemplo apos mudar a chave do `.env`: `npm run gerar-valores`
+e cole o hash/CPF impressos no `database/script.sql`)
 
 ## 2. Rodar o sistema
 

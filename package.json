@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "node app.js",
-    "gerar-script": "node gerar-script.js"
+    "gerar-valores": "node gerar-valores.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

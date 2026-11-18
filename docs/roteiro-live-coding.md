@@ -8,15 +8,15 @@
 
 ## Como usar este roteiro
 
-| Símbolo / bloco | Significado |
-|---|---|
-| **Fala:** | Sugestão do que dizer à turma ao abrir a etapa |
-| **Pontos para discutir** | Perguntas e explicações para fazer *enquanto* o código aparece na tela |
-| **Teste ao vivo** | O que executar no navegador/MySQL para provar que funcionou |
-| **Checkpoint** | O estado em que o projeto deve estar ao fim da etapa; se o aluno não chegou lá, não avance |
-| ⚠️ | Armadilha ou erro comum |
-| 🕵️ | Desafio para a turma encontrar o erro |
-| ✅ | Regra de negócio entregue (marque na tabela da seção 1) |
+| Símbolo / bloco          | Significado                                                                                |
+| ------------------------ | ------------------------------------------------------------------------------------------ |
+| **Fala:**                | Sugestão do que dizer à turma ao abrir a etapa                                             |
+| **Pontos para discutir** | Perguntas e explicações para fazer _enquanto_ o código aparece na tela                     |
+| **Teste ao vivo**        | O que executar no navegador/MySQL para provar que funcionou                                |
+| **Checkpoint**           | O estado em que o projeto deve estar ao fim da etapa; se o aluno não chegou lá, não avance |
+| ⚠️                       | Armadilha ou erro comum                                                                    |
+| 🕵️                       | Desafio para a turma encontrar o erro                                                      |
+| ✅                       | Regra de negócio entregue (marque na tabela da seção 1)                                    |
 
 **Ritmo sugerido para cada etapa:** (1) diga o objetivo em uma frase, (2) escreva o código **digitando**, não colando, (3) rode e mostre funcionando, (4) faça uma pergunta de fixação, (5) só então avance.
 
@@ -38,18 +38,18 @@ Ao final, o aluno será capaz de:
 
 ## 1. Mapa: enunciado → regra → onde implementar
 
-| Regra do enunciado | Código | Onde |
-|---|---|---|
-| RN01 – 3 registros por tabela | `INSERT` com 3 linhas | `database/script.sql` (gerado por `gerar-script.js`) |
-| RN02 – falha de login com mensagem | `mostrar('login', { erro })` | `POST /login` + `login.html` |
-| RN10 – token com expiração | `jwt.sign(..., { expiresIn: '1h' })` + `jwt.verify` no middleware | `POST /login`, `app.use(...)` |
-| RN03 – CPF criptografado | `criptografar()` / `descriptografar()` | funções de apoio + `/clientes` |
-| RN04 – nome do usuário, links, sair | `principal.html` + `POST /sair` | `GET /principal` |
-| RN05 – busca de clientes | `WHERE nome LIKE ?` | `GET /clientes` + formulário GET |
-| RN06 – editar cliente | `UPDATE clientes ...` | `PUT /clientes/:id` + `?editar=ID` |
-| RN07 – agendamentos ordenados c/ cliente e veículo | `JOIN` + `ORDER BY` | `GET /agendamentos` |
-| RN08 – alterar data do agendamento | `UPDATE agendamentos SET data_agendamento` | `PUT /agendamentos/:id` |
-| RN09 – veículo associado a cliente | `cliente_id NOT NULL` + `<select>` + validação | `/veiculos` |
+| Regra do enunciado                                 | Código                                                            | Onde                                                 |
+| -------------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------- |
+| RN01 – 3 registros por tabela                      | `INSERT` com 3 linhas                                             | `database/script.sql` (gerado por `gerar-script.js`) |
+| RN02 – falha de login com mensagem                 | `mostrar('login', { erro })`                                      | `POST /login` + `login.html`                         |
+| RN10 – token com expiração                         | `jwt.sign(..., { expiresIn: '1h' })` + `jwt.verify` no middleware | `POST /login`, `app.use(...)`                        |
+| RN03 – CPF criptografado                           | `criptografar()` / `descriptografar()`                            | funções de apoio + `/clientes`                       |
+| RN04 – nome do usuário, links, sair                | `principal.html` + `POST /sair`                                   | `GET /principal`                                     |
+| RN05 – busca de clientes                           | `WHERE nome LIKE ?`                                               | `GET /clientes` + formulário GET                     |
+| RN06 – editar cliente                              | `UPDATE clientes ...`                                             | `PUT /clientes/:id` + `?editar=ID`                   |
+| RN07 – agendamentos ordenados c/ cliente e veículo | `JOIN` + `ORDER BY`                                               | `GET /agendamentos`                                  |
+| RN08 – alterar data do agendamento                 | `UPDATE agendamentos SET data_agendamento`                        | `PUT /agendamentos/:id`                              |
+| RN09 – veículo associado a cliente                 | `cliente_id NOT NULL` + `<select>` + validação                    | `/veiculos`                                          |
 
 > 💡 Deixe esta tabela projetada/aberta durante a aula e marque ✅ conforme cada regra for entregue.
 
@@ -72,14 +72,14 @@ torque/
 └── package.json
 ```
 
-| Arquivo | Papel | Etapa |
-|---|---|---|
-| `docs/requisitos.md`, `docs/der.md` | Documentação exigida pelo gestor (feita no quadro/editor na etapa 0; **não incluída** neste repositório) | 0 |
-| `package.json`, `.env`, `.env.example`, `.gitignore` | Projeto e configuração | 1 |
-| `database/script.sql`, `gerar-script.js` | Banco de dados | 2 |
-| `app.js` | Back-end (cresce a cada etapa) | 4 a 9 |
-| `paginas/*.html` | Front-end (uma página por etapa) | 5 a 9 |
-| `.env`, `node_modules/` | Locais, ignorados pelo git | explicar por que não vão ao git |
+| Arquivo                                              | Papel                                                                                                    | Etapa                           |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `docs/requisitos.md`, `docs/der.md`                  | Documentação exigida pelo gestor (feita no quadro/editor na etapa 0; **não incluída** neste repositório) | 0                               |
+| `package.json`, `.env`, `.env.example`, `.gitignore` | Projeto e configuração                                                                                   | 1                               |
+| `database/script.sql`, `gerar-script.js`             | Banco de dados                                                                                           | 2                               |
+| `app.js`                                             | Back-end (cresce a cada etapa)                                                                           | 4 a 9                           |
+| `paginas/*.html`                                     | Front-end (uma página por etapa)                                                                         | 5 a 9                           |
+| `.env`, `node_modules/`                              | Locais, ignorados pelo git                                                                               | explicar por que não vão ao git |
 
 ---
 
@@ -104,24 +104,24 @@ torque/
 
 1. Leia o enunciado (`Contexto da atividade.txt`) **em voz alta** e peça aos alunos que sublinhem **substantivos** (→ tabelas) e **verbos** (→ funcionalidades).
 2. Monte no quadro as **entidades**: usuário, cliente, veículo, agendamento.
-3. Pergunte: *"Por que `usuarios` não tem relação com as outras tabelas?"* → só serve para login.
+3. Pergunte: _"Por que `usuarios` não tem relação com as outras tabelas?"_ → só serve para login.
 
 ### 0.2 Requisitos funcionais (`docs/requisitos.md`)
 
 Cada verbo do enunciado vira um requisito. Exemplo do projeto:
 
-| Código | Requisito |
-|---|---|
-| RF01 | Permitir login com e-mail e senha |
-| RF02 | Informar ao usuário quando o login falhar |
-| RF03 | Manter o login válido por tempo limitado (token com expiração) |
-| RF04 | Tela principal com nome do usuário, links de navegação e logout |
-| RF05 | Buscar clientes pelo nome |
-| RF06 | Editar os dados de um cliente |
-| RF07 | Armazenar o CPF criptografado |
-| RF08 | Cadastrar veículos associados a um cliente existente |
-| RF09 | Listar agendamentos ordenados por data, com dados do veículo e do cliente |
-| RF10 | Alterar a data de um agendamento |
+| Código | Requisito                                                                 |
+| ------ | ------------------------------------------------------------------------- |
+| RF01   | Permitir login com e-mail e senha                                         |
+| RF02   | Informar ao usuário quando o login falhar                                 |
+| RF03   | Manter o login válido por tempo limitado (token com expiração)            |
+| RF04   | Tela principal com nome do usuário, links de navegação e logout           |
+| RF05   | Buscar clientes pelo nome                                                 |
+| RF06   | Editar os dados de um cliente                                             |
+| RF07   | Armazenar o CPF criptografado                                             |
+| RF08   | Cadastrar veículos associados a um cliente existente                      |
+| RF09   | Listar agendamentos ordenados por data, com dados do veículo e do cliente |
+| RF10   | Alterar a data de um agendamento                                          |
 
 Inclua também a tabela de **infraestrutura** (SGBD, Node, Express, mysql2 etc.) com as versões usadas.
 
@@ -155,7 +155,7 @@ erDiagram
     VEICULOS ||--o{ AGENDAMENTOS : possui
 ```
 
-Leitura: *um cliente possui zero ou muitos veículos; um veículo possui zero ou muitos agendamentos.* O agendamento chega ao cliente **através do veículo**.
+Leitura: _um cliente possui zero ou muitos veículos; um veículo possui zero ou muitos agendamentos._ O agendamento chega ao cliente **através do veículo**.
 
 **Ponto de atenção LGPD:** CPF é dado pessoal; vamos protegê-lo no banco.
 
@@ -171,15 +171,15 @@ npm init -y
 npm install express mysql2 bcryptjs jsonwebtoken dotenv cookie-parser mustache
 ```
 
-| Pacote | Para quê |
-|---|---|
-| `express` | Servidor web e rotas |
-| `mysql2` | Conexão com o MySQL (usamos a versão `/promise`, com `await`) |
-| `bcryptjs` | Hash de senha |
-| `jsonwebtoken` | Criar e validar o token JWT |
-| `dotenv` | Ler o arquivo `.env` |
-| `cookie-parser` | Ler cookies (`req.cookies`) |
-| `mustache` | Preencher os `{{marcadores}}` dos `.html` |
+| Pacote          | Para quê                                                      |
+| --------------- | ------------------------------------------------------------- |
+| `express`       | Servidor web e rotas                                          |
+| `mysql2`        | Conexão com o MySQL (usamos a versão `/promise`, com `await`) |
+| `bcryptjs`      | Hash de senha                                                 |
+| `jsonwebtoken`  | Criar e validar o token JWT                                   |
+| `dotenv`        | Ler o arquivo `.env`                                          |
+| `cookie-parser` | Ler cookies (`req.cookies`)                                   |
+| `mustache`      | Preencher os `{{marcadores}}` dos `.html`                     |
 
 (`fs`, `path` e `crypto` já vêm com o Node; não se instalam.)
 
@@ -214,6 +214,7 @@ node_modules/
 ```
 
 **Perguntas rápidas:**
+
 - Por que o `.env` não vai para o git? (segredos)
 - Por que a chave precisa ter **32** caracteres e o IV **16**? (AES-256-CBC → chave de 256 bits = 32 bytes; bloco de 128 bits = 16 bytes)
 
@@ -226,6 +227,7 @@ node_modules/
 ## Etapa 2 – Banco de dados (30 min) → RN01, RN03
 
 ### 2.1 Modelagem
+
 Escreva as 4 tabelas explicando as chaves. **A ordem importa:** primeiro quem não depende de ninguém (`usuarios`, `clientes`), depois quem aponta para eles (`veiculos`, `agendamentos`).
 
 ```sql
@@ -267,25 +269,31 @@ CREATE TABLE agendamentos (
 ```
 
 **Perguntas:**
-- *"Por que `cpf` é `VARCHAR(255)` e não `CHAR(11)`?"* → porque guardamos o valor **criptografado** (hexadecimal, 32 caracteres).
-- *"Por que `email` é `UNIQUE`?"* → dois usuários com o mesmo e-mail tornariam o login ambíguo.
-- *"O que a `FOREIGN KEY` impede?"* → um veículo apontar para um cliente que não existe, ou apagar um cliente que ainda tem veículos.
+
+- _"Por que `cpf` é `VARCHAR(255)` e não `CHAR(11)`?"_ → porque guardamos o valor **criptografado** (hexadecimal, 32 caracteres).
+- _"Por que `email` é `UNIQUE`?"_ → dois usuários com o mesmo e-mail tornariam o login ambíguo.
+- _"O que a `FOREIGN KEY` impede?"_ → um veículo apontar para um cliente que não existe, ou apagar um cliente que ainda tem veículos.
 
 ### 2.2 Os dados – por que precisamos de um gerador?
+
 Mostre que **não dá para digitar o CPF criptografado nem o hash da senha à mão**. Crie o `gerar-script.js` mostrando só o essencial:
 
 ```js
-require('dotenv').config();
-const bcrypt = require('bcryptjs');
-const crypto = require('crypto');
+require("dotenv").config();
+const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 function criptografarCpf(texto) {
-  const cifra = crypto.createCipheriv('aes-256-cbc', process.env.CRIPTO_CHAVE, process.env.CRIPTO_IV);
-  return cifra.update(texto, 'utf8', 'hex') + cifra.final('hex');
+  const cifra = crypto.createCipheriv(
+    "aes-256-cbc",
+    process.env.CRIPTO_CHAVE,
+    process.env.CRIPTO_IV,
+  );
+  return cifra.update(texto, "utf8", "hex") + cifra.final("hex");
 }
 
-const senhaHash = bcrypt.hashSync('123456', 10);
-console.log(senhaHash, criptografarCpf('11122233344'));
+const senhaHash = bcrypt.hashSync("123456", 10);
+console.log(senhaHash, criptografarCpf("11122233344"));
 ```
 
 Rode duas vezes (`node gerar-script.js`): o **hash do bcrypt muda a cada execução** (tem "sal"), o **CPF criptografado não muda**. Isso abre a discussão da etapa 3.
@@ -321,6 +329,7 @@ INSERT INTO agendamentos (veiculo_id, data_agendamento, servico) VALUES
 ```
 
 **Pontos para discutir**
+
 - Os `cliente_id` e `veiculo_id` dos `INSERT`s **precisam existir** (1, 2, 3), senão a chave estrangeira recusa.
 - As datas dos agendamentos estão **fora de ordem de propósito**, para provar o `ORDER BY` na etapa 9.
 - Todos os usuários usam a senha `123456` (o mesmo hash) só para facilitar o teste.
@@ -333,6 +342,7 @@ mysql -u root -p < database/script.sql
 ```
 
 ### 2.3 Conferir
+
 ```sql
 SELECT id, nome, cpf FROM clientes;    -- CPF ilegível = RN03 ✅
 SELECT COUNT(*) FROM agendamentos;     -- 3 = RN01 ✅
@@ -348,14 +358,14 @@ SELECT COUNT(*) FROM agendamentos;     -- 3 = RN01 ✅
 
 Desenhe no quadro:
 
-| | Senha | CPF |
-|---|---|---|
-| Técnica | **Hash** (bcrypt) | **Criptografia** (AES-256-CBC) |
-| Reversível? | ❌ Nunca | ✅ Com a chave |
-| Por quê? | Só precisamos *comparar* | Precisamos *exibir* o CPF de volta |
-| Código | `bcrypt.compare(senha, hash)` | `descriptografar(valor)` |
+|             | Senha                         | CPF                                |
+| ----------- | ----------------------------- | ---------------------------------- |
+| Técnica     | **Hash** (bcrypt)             | **Criptografia** (AES-256-CBC)     |
+| Reversível? | ❌ Nunca                      | ✅ Com a chave                     |
+| Por quê?    | Só precisamos _comparar_      | Precisamos _exibir_ o CPF de volta |
+| Código      | `bcrypt.compare(senha, hash)` | `descriptografar(valor)`           |
 
-**Pergunta de fixação:** *"Se o gestor pedisse para mostrar a senha do usuário na tela, daria? E o CPF?"*
+**Pergunta de fixação:** _"Se o gestor pedisse para mostrar a senha do usuário na tela, daria? E o CPF?"_
 
 ---
 
@@ -371,12 +381,12 @@ navegador --pedido--> app.js (BACK) --dados--> paginas/*.html (FRONT) --> navega
                       login, SQL, CPF          {{marcadores}}
 ```
 
-| Onde | Responsabilidade | Exemplo |
-|---|---|---|
-| `app.js` (back) | Receber pedidos, validar, falar com o banco | `SELECT`, `bcrypt`, `jwt`, `criptografar` |
-| `paginas/*.html` (front) | Mostrar os dados | `<table>`, `<form>`, `{{nome}}` |
+| Onde                     | Responsabilidade                            | Exemplo                                   |
+| ------------------------ | ------------------------------------------- | ----------------------------------------- |
+| `app.js` (back)          | Receber pedidos, validar, falar com o banco | `SELECT`, `bcrypt`, `jwt`, `criptografar` |
+| `paginas/*.html` (front) | Mostrar os dados                            | `<table>`, `<form>`, `{{nome}}`           |
 
-**Regra de ouro para a turma:** *"Se tem SQL, senha, token ou criptografia, é `app.js`. Se tem `<tag>`, é um arquivo `.html`."*
+**Regra de ouro para a turma:** _"Se tem SQL, senha, token ou criptografia, é `app.js`. Se tem `<tag>`, é um arquivo `.html`."_
 
 ### 4.2 Como o HTML recebe os dados: `{{marcadores}}`
 
@@ -388,17 +398,17 @@ O `.html` é HTML comum, com "buracos" no formato `{{nome}}`. O back preenche os
 ```
 
 ```js
-mostrar('principal', { nome: 'Maria' })   // → <h1>Ola, Maria</h1>
+mostrar("principal", { nome: "Maria" }); // → <h1>Ola, Maria</h1>
 ```
 
 Os quatro recursos que vamos usar (biblioteca **mustache**):
 
-| Sintaxe | O que faz |
-|---|---|
-| `{{nome}}` | Escreve o valor, **já protegendo contra XSS** (`<` vira `&lt;`) |
+| Sintaxe                           | O que faz                                                             |
+| --------------------------------- | --------------------------------------------------------------------- |
+| `{{nome}}`                        | Escreve o valor, **já protegendo contra XSS** (`<` vira `&lt;`)       |
 | `{{#clientes}} ... {{/clientes}}` | **Repete** o trecho para cada item da lista (ou mostra se for `true`) |
-| `{{^editando}} ... {{/editando}}` | Mostra o trecho só se for `false`/vazio |
-| `{{form.nome}}` | Entra no objeto `form` e pega o campo `nome` |
+| `{{^editando}} ... {{/editando}}` | Mostra o trecho só se for `false`/vazio                               |
+| `{{form.nome}}`                   | Entra no objeto `form` e pega o campo `nome`                          |
 
 > 💬 Decisão didática: não há CSS nem JavaScript no navegador. O servidor devolve a página pronta.
 
@@ -407,31 +417,33 @@ Os quatro recursos que vamos usar (biblioteca **mustache**):
 ### 4.3 Começando o `app.js` (back)
 
 ```js
-require('dotenv').config();                 // 1º: carrega o .env antes de tudo
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
-const mysql = require('mysql2/promise');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const cookieParser = require('cookie-parser');
-const Mustache = require('mustache');
+require("dotenv").config(); // 1º: carrega o .env antes de tudo
+const fs = require("fs");
+const path = require("path");
+const express = require("express");
+const mysql = require("mysql2/promise");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const cookieParser = require("cookie-parser");
+const Mustache = require("mustache");
 
 const app = express();
 app.use(express.urlencoded({ extended: false })); // lê os dados dos formulários (req.body)
-app.use(cookieParser());                          // lê os cookies (req.cookies)
+app.use(cookieParser()); // lê os cookies (req.cookies)
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  dateStrings: true,   // datas chegam como texto, sem conversão de fuso
+  dateStrings: true, // datas chegam como texto, sem conversão de fuso
 });
 
 const porta = process.env.PORT || 3000;
-app.listen(porta, () => console.log(`Oficina rodando em http://localhost:${porta}`));
+app.listen(porta, () =>
+  console.log(`Oficina rodando em http://localhost:${porta}`),
+);
 ```
 
 Rode `npm start`. O servidor sobe (ainda sem rotas; o navegador mostra "Cannot GET /").
@@ -445,18 +457,26 @@ Coloque entre o `db` e o `app.listen`:
 ```js
 // Abre paginas/<nome>.html, troca os {{marcadores}} pelos dados e devolve o HTML pronto
 function mostrar(nome, dados = {}) {
-  const arquivo = path.join(__dirname, 'paginas', `${nome}.html`);
-  return Mustache.render(fs.readFileSync(arquivo, 'utf8'), dados);
+  const arquivo = path.join(__dirname, "paginas", `${nome}.html`);
+  return Mustache.render(fs.readFileSync(arquivo, "utf8"), dados);
 }
 
 // [RN03] Criptografia reversível (AES-256): vai para o banco criptografado, volta legível para a tela
 function criptografar(texto) {
-  const cifra = crypto.createCipheriv('aes-256-cbc', process.env.CRIPTO_CHAVE, process.env.CRIPTO_IV);
-  return cifra.update(texto, 'utf8', 'hex') + cifra.final('hex');
+  const cifra = crypto.createCipheriv(
+    "aes-256-cbc",
+    process.env.CRIPTO_CHAVE,
+    process.env.CRIPTO_IV,
+  );
+  return cifra.update(texto, "utf8", "hex") + cifra.final("hex");
 }
 function descriptografar(texto) {
-  const decifra = crypto.createDecipheriv('aes-256-cbc', process.env.CRIPTO_CHAVE, process.env.CRIPTO_IV);
-  return decifra.update(texto, 'hex', 'utf8') + decifra.final('utf8');
+  const decifra = crypto.createDecipheriv(
+    "aes-256-cbc",
+    process.env.CRIPTO_CHAVE,
+    process.env.CRIPTO_IV,
+  );
+  return decifra.update(texto, "hex", "utf8") + decifra.final("utf8");
 }
 ```
 
@@ -464,12 +484,12 @@ function descriptografar(texto) {
 
 ### 4.5 Verbos HTTP: o que cada um significa (conceito, 5 min)
 
-| Verbo | Uso no sistema | Exemplo |
-|---|---|---|
-| **GET** | Ler/consultar (não altera nada) | `GET /clientes?busca=maria` |
-| **POST** | Criar um recurso novo (e login/logout) | `POST /clientes` |
-| **PUT** | Atualizar um recurso existente | `PUT /clientes/3` |
-| **DELETE** | Remover um recurso existente | `DELETE /clientes/3` |
+| Verbo      | Uso no sistema                         | Exemplo                     |
+| ---------- | -------------------------------------- | --------------------------- |
+| **GET**    | Ler/consultar (não altera nada)        | `GET /clientes?busca=maria` |
+| **POST**   | Criar um recurso novo (e login/logout) | `POST /clientes`            |
+| **PUT**    | Atualizar um recurso existente         | `PUT /clientes/3`           |
+| **DELETE** | Remover um recurso existente           | `DELETE /clientes/3`        |
 
 Regra: a **URL é o substantivo** (`/clientes/3`), o **verbo é a ação**. Por isso não usamos `/clientes/3/editar` nem `/clientes/3/excluir`.
 
@@ -478,8 +498,8 @@ Regra: a **URL é o substantivo** (`/clientes/3`), o **verbo é a ação**. Por 
 ```js
 // Faz o PUT e o DELETE funcionarem em formulários
 app.use((req, res, next) => {
-  const metodo = String(req.body?._method || '').toUpperCase();
-  if (req.method === 'POST' && ['PUT', 'DELETE'].includes(metodo)) {
+  const metodo = String(req.body?._method || "").toUpperCase();
+  if (req.method === "POST" && ["PUT", "DELETE"].includes(metodo)) {
     req.method = metodo;
   }
   next();
@@ -495,7 +515,7 @@ No HTML, o formulário de exclusão terá este campo escondido (veremos nas etap
 </form>
 ```
 
-Mostre no DevTools (aba *Network*) que o navegador enviou POST e que o Express enxerga DELETE.
+Mostre no DevTools (aba _Network_) que o navegador enviou POST e que o Express enxerga DELETE.
 
 **Por que a ordem importa?** O `req.body` só existe depois do `express.urlencoded`, e o `_method` vem dentro do `req.body`. Se o middleware ficasse antes, `req.body` estaria vazio e o `DELETE` nunca seria reconhecido. 🕵️ Sugestão: mude a ordem de propósito e peça à turma para explicar por que parou de funcionar.
 
@@ -512,21 +532,21 @@ Mostre no DevTools (aba *Network*) que o navegador enviou POST e que o Express e
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Oficina - Login</title>
-</head>
-<body>
-  <h1>Oficina Mecanica - Login</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oficina - Login</title>
+  </head>
+  <body>
+    <h1>Oficina Mecanica - Login</h1>
 
-  <form method="POST" action="/login">
-    <input type="email" name="email" placeholder="E-mail" required />
-    <input type="password" name="senha" placeholder="Senha" required />
-    <button>Entrar</button>
-  </form>
+    <form method="POST" action="/login">
+      <input type="email" name="email" placeholder="E-mail" required />
+      <input type="password" name="senha" placeholder="Senha" required />
+      <button>Entrar</button>
+    </form>
 
-  <p>{{erro}}</p>
-</body>
+    <p>{{erro}}</p>
+  </body>
 </html>
 ```
 
@@ -537,37 +557,44 @@ Mostre no DevTools (aba *Network*) que o navegador enviou POST e que o Express e
 Coloque **depois do middleware `_method`/funções de apoio e antes do `app.listen`**:
 
 ```js
-app.get('/', (req, res) => res.send(mostrar('login')));
+app.get("/", (req, res) => res.send(mostrar("login")));
 
-app.post('/login', async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, senha } = req.body;
-  const [usuarios] = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
+  const [usuarios] = await db.query("SELECT * FROM usuarios WHERE email = ?", [
+    email,
+  ]);
   const usuario = usuarios[0];
 
   // RN02: mesma mensagem para e-mail inexistente ou senha errada
   if (!usuario || !(await bcrypt.compare(senha, usuario.senha))) {
-    return res.send(mostrar('login', { erro: 'E-mail ou senha invalidos' }));
+    return res.send(mostrar("login", { erro: "E-mail ou senha invalidos" }));
   }
 
   // RN10: token que expira em 1 hora, guardado em cookie
-  const token = jwt.sign({ id: usuario.id, nome: usuario.nome }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  res.cookie('token', token, { httpOnly: true });
-  res.redirect('/principal');
+  const token = jwt.sign(
+    { id: usuario.id, nome: usuario.nome },
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" },
+  );
+  res.cookie("token", token, { httpOnly: true });
+  res.redirect("/principal");
 });
 
-app.post('/sair', (req, res) => {
-  res.clearCookie('token');
-  res.redirect('/');
+app.post("/sair", (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/");
 });
 ```
 
 **Pontos para discutir**
+
 - Repare: a rota **não tem nenhum `<tag>`**. Ela só decide o que fazer e qual página entregar.
 - `const [usuarios] = ...`: o `db.query` devolve `[linhas, metadados]`; a desestruturação pega só as linhas. `usuarios[0]` é o primeiro (ou `undefined` se não achou).
 - O `?` em `db.query` = **consulta parametrizada**. Mostre o que aconteceria com concatenação: `' OR '1'='1`.
 - Por que a mensagem é a mesma para e-mail e senha errados? (não revelar quais e-mails existem)
 - `bcrypt.compare(senha, hash)`: compara a senha digitada com o hash do banco, sem nunca "descobrir" a senha original.
-- O que é um JWT? Cole o token em **jwt.io** e mostre `id`, `nome`, `iat`, `exp`. *"O conteúdo é público; o que protege é a assinatura."* → nunca colocar senha/CPF no token.
+- O que é um JWT? Cole o token em **jwt.io** e mostre `id`, `nome`, `iat`, `exp`. _"O conteúdo é público; o que protege é a assinatura."_ → nunca colocar senha/CPF no token.
 - `httpOnly`: o JavaScript da página não consegue ler o cookie.
 - `res.redirect` depois de um POST bem-sucedido: padrão **Post/Redirect/Get** (o F5 não reenvia o formulário).
 - Quem controla a **expiração** é o JWT (`expiresIn: '1h'`), não o cookie. Mesmo que o cookie continuasse no navegador, o `jwt.verify` recusaria o token vencido.
@@ -581,16 +608,17 @@ app.use((req, res, next) => {
     req.usuario = jwt.verify(req.cookies.token, process.env.JWT_SECRET); // falha se faltar ou expirou
     next();
   } catch (erro) {
-    res.redirect('/');
+    res.redirect("/");
   }
 });
 ```
 
 Leitura em três passos: (1) pega o token do cookie, (2) `jwt.verify` valida assinatura **e** validade, (3) se der erro de qualquer tipo (sem token, adulterado, vencido) o `catch` manda para o login.
 
-**Ideia-chave:** a **posição** do `app.use` importa. Rotas declaradas *antes* (login, sair) são públicas; as *depois* são protegidas. Por isso o porteiro vem **logo depois** de `/`, `/login` e `/sair`.
+**Ideia-chave:** a **posição** do `app.use` importa. Rotas declaradas _antes_ (login, sair) são públicas; as _depois_ são protegidas. Por isso o porteiro vem **logo depois** de `/`, `/login` e `/sair`.
 
 ### 5.4 Testes ao vivo
+
 1. Senha errada → mensagem de erro ✅ (RN02)
 2. Acessar `/clientes` sem logar → volta ao login ✅ (a rota ainda não existe, mas o porteiro já barra)
 3. **Provar a expiração:** troque temporariamente `'1h'` por `'10s'`, logue, espere e recarregue → volta ao login ✅ (RN10). **Volte para `'1h'`.**
@@ -606,28 +634,29 @@ Leitura em três passos: (1) pega o token do cookie, (2) `jwt.verify` valida ass
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Oficina - Principal</title>
-</head>
-<body>
-  <h1>Ola, {{nome}}</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oficina - Principal</title>
+  </head>
+  <body>
+    <h1>Ola, {{nome}}</h1>
 
-  <p>
-    <a href="/clientes">Clientes</a> |
-    <a href="/veiculos">Veiculos</a> |
-    <a href="/agendamentos">Agendamentos</a>
-  </p>
+    <p>
+      <a href="/clientes">Clientes</a> | <a href="/veiculos">Veiculos</a> |
+      <a href="/agendamentos">Agendamentos</a>
+    </p>
 
-  <form method="POST" action="/sair"><button>Sair</button></form>
-</body>
+    <form method="POST" action="/sair"><button>Sair</button></form>
+  </body>
 </html>
 ```
 
 **Back** (`app.js`, abaixo do porteiro):
 
 ```js
-app.get('/principal', (req, res) => res.send(mostrar('principal', { nome: req.usuario.nome })));
+app.get("/principal", (req, res) =>
+  res.send(mostrar("principal", { nome: req.usuario.nome })),
+);
 ```
 
 - O nome vem de `req.usuario`, preenchido pelo porteiro a partir do token → **sem nova consulta ao banco**.
@@ -652,31 +681,41 @@ Para cada recurso repetimos o mesmo padrão: **(1) o `.html`** desenha a tela, *
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Oficina - Clientes</title>
-</head>
-<body>
-  <h1>Clientes</h1>
-  <p><a href="/principal">Voltar</a></p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oficina - Clientes</title>
+  </head>
+  <body>
+    <h1>Clientes</h1>
+    <p><a href="/principal">Voltar</a></p>
 
-  <form method="GET" action="/clientes">
-    <input type="text" name="busca" placeholder="Buscar por nome" value="{{busca}}" />
-    <button>Buscar</button>
-  </form>
+    <form method="GET" action="/clientes">
+      <input
+        type="text"
+        name="busca"
+        placeholder="Buscar por nome"
+        value="{{busca}}"
+      />
+      <button>Buscar</button>
+    </form>
 
-  <table border="1">
-    <tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th></tr>
-    {{#clientes}}
-    <tr>
-      <td>{{nome}}</td>
-      <td>{{cpf}}</td>
-      <td>{{telefone}}</td>
-      <td>{{email}}</td>
-    </tr>
-    {{/clientes}}
-  </table>
-</body>
+    <table border="1">
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>E-mail</th>
+      </tr>
+      {{#clientes}}
+      <tr>
+        <td>{{nome}}</td>
+        <td>{{cpf}}</td>
+        <td>{{telefone}}</td>
+        <td>{{email}}</td>
+      </tr>
+      {{/clientes}}
+    </table>
+  </body>
 </html>
 ```
 
@@ -685,24 +724,30 @@ Para cada recurso repetimos o mesmo padrão: **(1) o `.html`** desenha a tela, *
 **Back:**
 
 ```js
-app.get('/clientes', async (req, res) => {
-  const busca = req.query.busca || '';
-  const [lista] = await db.query('SELECT * FROM clientes WHERE nome LIKE ?', [`%${busca}%`]);
+app.get("/clientes", async (req, res) => {
+  const busca = req.query.busca || "";
+  const [lista] = await db.query("SELECT * FROM clientes WHERE nome LIKE ?", [
+    `%${busca}%`,
+  ]);
 
   // A página recebe o CPF já legível: a criptografia é assunto do back
-  const clientes = lista.map((cliente) => ({ ...cliente, cpf: descriptografar(cliente.cpf) }));
+  const clientes = lista.map((cliente) => ({
+    ...cliente,
+    cpf: descriptografar(cliente.cpf),
+  }));
 
-  res.send(mostrar('clientes', { busca, clientes }));
+  res.send(mostrar("clientes", { busca, clientes }));
 });
 ```
 
 **Pontos para discutir**
+
 - Note a divisão: o `.html` **nunca** descriptografa. Quem conhece a chave é só o back.
 - `req.query` guarda o que vem na URL depois do `?`; `req.body` guarda o que vem de formulário POST. **Não confundir.**
 - O formulário de busca é `GET`: o termo vai na URL (`/clientes?busca=maria`) → dá para favoritar/compartilhar.
 - `%${busca}%` = "contém". Digite `sil` e filtre "Joao da Silva". Busca vazia vira `%%` e traz todos.
 - `{ ...cliente, cpf: ... }` copia todos os campos do cliente e **troca** só o `cpf` pelo valor legível.
-- **Por que buscar pelo nome e não pelo CPF?** O CPF está criptografado: `LIKE '%111%'` não funcionaria. *Decisão de projeto consequência da LGPD.*
+- **Por que buscar pelo nome e não pelo CPF?** O CPF está criptografado: `LIKE '%111%'` não funcionaria. _Decisão de projeto consequência da LGPD._
 - Confirme no MySQL (`SELECT cpf FROM clientes`) que o banco guarda ilegível, mas a tela mostra legível.
 
 **Teste ao vivo:** abrir `/clientes` (3 clientes, CPFs legíveis) → buscar "maria" → só a Maria.
@@ -725,11 +770,13 @@ app.get('/clientes', async (req, res) => {
 **Back:**
 
 ```js
-app.post('/clientes', async (req, res) => {
+app.post("/clientes", async (req, res) => {
   const { nome, cpf, telefone, email } = req.body;
-  await db.query('INSERT INTO clientes (nome, cpf, telefone, email) VALUES (?, ?, ?, ?)',
-    [nome, criptografar(cpf), telefone, email]);
-  res.redirect('/clientes');   // Post/Redirect/Get: F5 não reenvia o formulário
+  await db.query(
+    "INSERT INTO clientes (nome, cpf, telefone, email) VALUES (?, ?, ?, ?)",
+    [nome, criptografar(cpf), telefone, email],
+  );
+  res.redirect("/clientes"); // Post/Redirect/Get: F5 não reenvia o formulário
 });
 ```
 
@@ -750,15 +797,41 @@ Ideia: **um único formulário** serve para cadastrar e editar. Se a URL tem `?e
 ```
 
 ```html
-<h2>{{#editando}}Editar{{/editando}}{{^editando}}Cadastrar{{/editando}} cliente</h2>
+<h2>
+  {{#editando}}Editar{{/editando}}{{^editando}}Cadastrar{{/editando}} cliente
+</h2>
 
 <form method="POST" action="{{acao}}">
   {{#editando}}<input type="hidden" name="_method" value="PUT" />{{/editando}}
-  <input type="text" name="nome" placeholder="Nome" value="{{form.nome}}" required />
-  <input type="text" name="cpf" placeholder="CPF" value="{{form.cpf}}" required />
-  <input type="text" name="telefone" placeholder="Telefone" value="{{form.telefone}}" />
-  <input type="email" name="email" placeholder="E-mail" value="{{form.email}}" />
-  <button>{{#editando}}Salvar{{/editando}}{{^editando}}Cadastrar{{/editando}}</button>
+  <input
+    type="text"
+    name="nome"
+    placeholder="Nome"
+    value="{{form.nome}}"
+    required
+  />
+  <input
+    type="text"
+    name="cpf"
+    placeholder="CPF"
+    value="{{form.cpf}}"
+    required
+  />
+  <input
+    type="text"
+    name="telefone"
+    placeholder="Telefone"
+    value="{{form.telefone}}"
+  />
+  <input
+    type="email"
+    name="email"
+    placeholder="E-mail"
+    value="{{form.email}}"
+  />
+  <button>
+    {{#editando}}Salvar{{/editando}}{{^editando}}Cadastrar{{/editando}}
+  </button>
 </form>
 ```
 
@@ -770,27 +843,34 @@ Ideia: **um único formulário** serve para cadastrar e editar. Se a URL tem `?e
 
 ```js
 // no GET /clientes, troque o res.send por:
-const editar = clientes.find((cliente) => String(cliente.id) === req.query.editar);
+const editar = clientes.find(
+  (cliente) => String(cliente.id) === req.query.editar,
+);
 
-res.send(mostrar('clientes', {
-  busca,
-  clientes,
-  editando: Boolean(editar),                             // true = formulário de edição
-  acao: editar ? `/clientes/${editar.id}` : '/clientes', // para onde o formulário envia
-  form: editar || {},                                    // valores que preenchem os campos
-}));
+res.send(
+  mostrar("clientes", {
+    busca,
+    clientes,
+    editando: Boolean(editar), // true = formulário de edição
+    acao: editar ? `/clientes/${editar.id}` : "/clientes", // para onde o formulário envia
+    form: editar || {}, // valores que preenchem os campos
+  }),
+);
 ```
 
 ```js
-app.put('/clientes/:id', async (req, res) => {
+app.put("/clientes/:id", async (req, res) => {
   const { nome, cpf, telefone, email } = req.body;
-  await db.query('UPDATE clientes SET nome = ?, cpf = ?, telefone = ?, email = ? WHERE id = ?',
-    [nome, criptografar(cpf), telefone, email, req.params.id]);
-  res.redirect('/clientes');
+  await db.query(
+    "UPDATE clientes SET nome = ?, cpf = ?, telefone = ?, email = ? WHERE id = ?",
+    [nome, criptografar(cpf), telefone, email, req.params.id],
+  );
+  res.redirect("/clientes");
 });
 ```
 
 **Pontos para discutir**
+
 - `String(cliente.id) === req.query.editar`: o `id` do banco é número e o da URL é texto; convertemos para comparar.
 - `req.params.id` é o `3` de `/clientes/3`.
 - O CPF chega ao formulário **já descriptografado** (por causa do `map`) e volta criptografado no `UPDATE`.
@@ -811,9 +891,9 @@ Na mesma célula de ações do `.html`, junto do link Editar, um formulário com
 **Back – primeiro a versão ingênua** (mostre para a turma, depois quebre de propósito):
 
 ```js
-app.delete('/clientes/:id', async (req, res) => {
-  await db.query('DELETE FROM clientes WHERE id = ?', [req.params.id]);
-  res.redirect('/clientes');
+app.delete("/clientes/:id", async (req, res) => {
+  await db.query("DELETE FROM clientes WHERE id = ?", [req.params.id]);
+  res.redirect("/clientes");
 });
 ```
 
@@ -832,22 +912,35 @@ async function excluir(res, tabela, id, volta, motivo) {
     await db.query(`DELETE FROM ${tabela} WHERE id = ?`, [id]);
     res.redirect(volta);
   } catch (erro) {
-    if (erro.code === 'ER_ROW_IS_REFERENCED_2') {
-      return res.status(409).send(`<p>Nao foi possivel excluir: ${motivo}.</p><p><a href="${volta}">Voltar</a></p>`);
+    if (erro.code === "ER_ROW_IS_REFERENCED_2") {
+      return res
+        .status(409)
+        .send(
+          `<p>Nao foi possivel excluir: ${motivo}.</p><p><a href="${volta}">Voltar</a></p>`,
+        );
     }
     console.error(erro);
-    res.status(500).send(`<p>Erro ao excluir.</p><p><a href="${volta}">Voltar</a></p>`);
+    res
+      .status(500)
+      .send(`<p>Erro ao excluir.</p><p><a href="${volta}">Voltar</a></p>`);
   }
 }
 
-app.delete('/clientes/:id', async (req, res) => {
-  await excluir(res, 'clientes', req.params.id, '/clientes', 'o cliente possui veiculos cadastrados');
+app.delete("/clientes/:id", async (req, res) => {
+  await excluir(
+    res,
+    "clientes",
+    req.params.id,
+    "/clientes",
+    "o cliente possui veiculos cadastrados",
+  );
 });
 ```
 
 **Pontos para discutir**
+
 - `try/catch` com `await`: o `catch` captura a recusa do banco e o servidor continua de pé.
-- `erro.code === 'ER_ROW_IS_REFERENCED_2'` identifica *especificamente* o erro de vínculo; qualquer outro erro vira 500.
+- `erro.code === 'ER_ROW_IS_REFERENCED_2'` identifica _especificamente_ o erro de vínculo; qualquer outro erro vira 500.
 - Status HTTP: **409 Conflict** = "o pedido conflita com o estado atual dos dados"; **500** = falha inesperada do servidor.
 - ⚠️ O nome da tabela entra no SQL por interpolação (`${tabela}`), o que só é seguro porque é sempre um texto fixo escrito por nós, nunca vindo do usuário. O `id` continua com `?` (parametrizado). Boa chance de reforçar a diferença.
 - **Resultado esperado:** excluir cliente sem veículo funciona; excluir cliente com veículo mostra a mensagem e o servidor continua rodando.
@@ -867,56 +960,88 @@ Mesmo padrão da etapa 7 (tabela, formulário reaproveitado, `PUT`, `DELETE`). A
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Oficina - Veiculos</title>
-</head>
-<body>
-  <h1>Veiculos</h1>
-  <p><a href="/principal">Voltar</a></p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oficina - Veiculos</title>
+  </head>
+  <body>
+    <h1>Veiculos</h1>
+    <p><a href="/principal">Voltar</a></p>
 
-  <table border="1">
-    <tr><th>Placa</th><th>Marca</th><th>Modelo</th><th>Ano</th><th>Cliente</th><th></th></tr>
+    <table border="1">
+      <tr>
+        <th>Placa</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Cliente</th>
+        <th></th>
+      </tr>
 
-    {{#veiculos}}
-    <tr>
-      <td>{{placa}}</td>
-      <td>{{marca}}</td>
-      <td>{{modelo}}</td>
-      <td>{{ano}}</td>
-      <td>{{cliente_id}}</td>
-      <td>
-        <a href="/veiculos?editar={{id}}">Editar</a>
-        <form method="POST" action="/veiculos/{{id}}">
-          <input type="hidden" name="_method" value="DELETE" />
-          <button>Excluir</button>
-        </form>
-      </td>
-    </tr>
-    {{/veiculos}}
-  </table>
+      {{#veiculos}}
+      <tr>
+        <td>{{placa}}</td>
+        <td>{{marca}}</td>
+        <td>{{modelo}}</td>
+        <td>{{ano}}</td>
+        <td>{{cliente_id}}</td>
+        <td>
+          <a href="/veiculos?editar={{id}}">Editar</a>
+          <form method="POST" action="/veiculos/{{id}}">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button>Excluir</button>
+          </form>
+        </td>
+      </tr>
+      {{/veiculos}}
+    </table>
 
-  <h2>{{#editando}}Editar{{/editando}}{{^editando}}Cadastrar{{/editando}} veiculo</h2>
+    <h2>
+      {{#editando}}Editar{{/editando}}{{^editando}}Cadastrar{{/editando}}
+      veiculo
+    </h2>
 
-  <form method="POST" action="{{acao}}">
-    {{#editando}}<input type="hidden" name="_method" value="PUT" />{{/editando}}
+    <form method="POST" action="{{acao}}">
+      {{#editando}}<input
+        type="hidden"
+        name="_method"
+        value="PUT"
+      />{{/editando}}
 
-    <select name="cliente_id" required>
-      <option value="">Selecione o cliente</option>
-      {{#clientes}}
-      <option value="{{id}}" {{selecionado}}>{{nome}}</option>
-      {{/clientes}}
-    </select>
+      <select name="cliente_id" required>
+        <option value="">Selecione o cliente</option>
+        {{#clientes}}
+        <option value="{{id}}" {{selecionado}}>{{nome}}</option>
+        {{/clientes}}
+      </select>
 
-    <input type="text" name="placa" placeholder="Placa" value="{{form.placa}}" required />
-    <input type="text" name="marca" placeholder="Marca" value="{{form.marca}}" />
-    <input type="text" name="modelo" placeholder="Modelo" value="{{form.modelo}}" />
-    <input type="number" name="ano" placeholder="Ano" value="{{form.ano}}" />
-    <button>{{#editando}}Salvar{{/editando}}{{^editando}}Cadastrar{{/editando}}</button>
-  </form>
+      <input
+        type="text"
+        name="placa"
+        placeholder="Placa"
+        value="{{form.placa}}"
+        required
+      />
+      <input
+        type="text"
+        name="marca"
+        placeholder="Marca"
+        value="{{form.marca}}"
+      />
+      <input
+        type="text"
+        name="modelo"
+        placeholder="Modelo"
+        value="{{form.modelo}}"
+      />
+      <input type="number" name="ano" placeholder="Ano" value="{{form.ano}}" />
+      <button>
+        {{#editando}}Salvar{{/editando}}{{^editando}}Cadastrar{{/editando}}
+      </button>
+    </form>
 
-  <p>{{erro}}</p>
-</body>
+    <p>{{erro}}</p>
+  </body>
 </html>
 ```
 
@@ -926,57 +1051,73 @@ Mesmo padrão da etapa 7 (tabela, formulário reaproveitado, `PUT`, `DELETE`). A
 
 ```js
 // Busca os dados e preenche a página. É função porque também reexibe a página com erro.
-async function mostrarVeiculos(req, res, erro = '') {
-  const [veiculos] = await db.query('SELECT * FROM veiculos');
-  const [listaClientes] = await db.query('SELECT id, nome FROM clientes');
+async function mostrarVeiculos(req, res, erro = "") {
+  const [veiculos] = await db.query("SELECT * FROM veiculos");
+  const [listaClientes] = await db.query("SELECT id, nome FROM clientes");
   const editar = veiculos.find((v) => String(v.id) === req.query.editar);
 
   // RN09: lista de clientes para escolher o dono; marca o dono atual na edição
   const clientes = listaClientes.map((cliente) => ({
     ...cliente,
-    selecionado: editar && cliente.id === editar.cliente_id ? 'selected' : '',
+    selecionado: editar && cliente.id === editar.cliente_id ? "selected" : "",
   }));
 
-  res.send(mostrar('veiculos', {
-    veiculos, clientes, erro,
-    editando: Boolean(editar),
-    acao: editar ? `/veiculos/${editar.id}` : '/veiculos',
-    form: editar || {},
-  }));
+  res.send(
+    mostrar("veiculos", {
+      veiculos,
+      clientes,
+      erro,
+      editando: Boolean(editar),
+      acao: editar ? `/veiculos/${editar.id}` : "/veiculos",
+      form: editar || {},
+    }),
+  );
 }
 
-app.get('/veiculos', (req, res) => mostrarVeiculos(req, res));
+app.get("/veiculos", (req, res) => mostrarVeiculos(req, res));
 
-app.post('/veiculos', async (req, res) => {
+app.post("/veiculos", async (req, res) => {
   const { cliente_id, placa, marca, modelo, ano } = req.body;
-  if (!cliente_id) return mostrarVeiculos(req, res, 'cliente_id e obrigatorio');
+  if (!cliente_id) return mostrarVeiculos(req, res, "cliente_id e obrigatorio");
 
-  await db.query('INSERT INTO veiculos (cliente_id, placa, marca, modelo, ano) VALUES (?, ?, ?, ?, ?)',
-    [cliente_id, placa, marca, modelo, ano || null]);
-  res.redirect('/veiculos');
+  await db.query(
+    "INSERT INTO veiculos (cliente_id, placa, marca, modelo, ano) VALUES (?, ?, ?, ?, ?)",
+    [cliente_id, placa, marca, modelo, ano || null],
+  );
+  res.redirect("/veiculos");
 });
 
-app.put('/veiculos/:id', async (req, res) => {
+app.put("/veiculos/:id", async (req, res) => {
   const { cliente_id, placa, marca, modelo, ano } = req.body;
-  if (!cliente_id) return mostrarVeiculos(req, res, 'cliente_id e obrigatorio');
+  if (!cliente_id) return mostrarVeiculos(req, res, "cliente_id e obrigatorio");
 
-  await db.query('UPDATE veiculos SET cliente_id = ?, placa = ?, marca = ?, modelo = ?, ano = ? WHERE id = ?',
-    [cliente_id, placa, marca, modelo, ano || null, req.params.id]);
-  res.redirect('/veiculos');
+  await db.query(
+    "UPDATE veiculos SET cliente_id = ?, placa = ?, marca = ?, modelo = ?, ano = ? WHERE id = ?",
+    [cliente_id, placa, marca, modelo, ano || null, req.params.id],
+  );
+  res.redirect("/veiculos");
 });
 
-app.delete('/veiculos/:id', async (req, res) => {
-  await excluir(res, 'veiculos', req.params.id, '/veiculos', 'o veiculo possui agendamentos');
+app.delete("/veiculos/:id", async (req, res) => {
+  await excluir(
+    res,
+    "veiculos",
+    req.params.id,
+    "/veiculos",
+    "o veiculo possui agendamentos",
+  );
 });
 ```
 
 (A função `excluir` foi criada na etapa 7. Excluir um veículo que tem agendamento mostra a mensagem de vínculo, igual ao cliente com veículo.)
 
 **Pontos para discutir**
+
 - Por que `mostrarVeiculos` é uma **função** e não uma rota? Porque é chamada por três lugares: `GET`, e os dois `return mostrarVeiculos(...)` das validações. Evita repetir os dois `SELECT`.
 - A tabela mostra `cliente_id` (um número). Melhoria possível: `JOIN` para mostrar o nome (como faremos em agendamentos).
 
 **Defesa em 3 camadas (ótima discussão):**
+
 1. **Tela (front):** `<select required>` obriga a escolher.
 2. **Servidor (back):** `if (!cliente_id)` — nunca confie só no navegador (mostre com DevTools removendo o `required`).
 3. **Banco:** `cliente_id INT NOT NULL` + `FOREIGN KEY`.
@@ -998,30 +1139,33 @@ app.delete('/veiculos/:id', async (req, res) => {
 **Back** (`app.js`) – aqui está a parte "inteligente": o `JOIN`.
 
 ```js
-app.get('/agendamentos', async (req, res) => {
+app.get("/agendamentos", async (req, res) => {
   const [lista] = await db.query(
     `SELECT agendamentos.*, veiculos.placa, veiculos.marca, veiculos.modelo, clientes.nome AS cliente_nome
      FROM agendamentos
      JOIN veiculos ON veiculos.id = agendamentos.veiculo_id
      JOIN clientes ON clientes.id = veiculos.cliente_id
-     ORDER BY agendamentos.data_agendamento`);
-  const [veiculos] = await db.query('SELECT * FROM veiculos');
+     ORDER BY agendamentos.data_agendamento`,
+  );
+  const [veiculos] = await db.query("SELECT * FROM veiculos");
 
   // Duas versões da data: uma para LER e outra no formato que o campo datetime-local exige
   const agendamentos = lista.map((a) => ({
     ...a,
-    data_br: new Date(a.data_agendamento).toLocaleString('pt-BR'),
-    data_input: a.data_agendamento.slice(0, 16).replace(' ', 'T'),
+    data_br: new Date(a.data_agendamento).toLocaleString("pt-BR"),
+    data_input: a.data_agendamento.slice(0, 16).replace(" ", "T"),
   }));
 
-  res.send(mostrar('agendamentos', { agendamentos, veiculos }));
+  res.send(mostrar("agendamentos", { agendamentos, veiculos }));
 });
 
-app.post('/agendamentos', async (req, res) => {
+app.post("/agendamentos", async (req, res) => {
   const { veiculo_id, data_agendamento, servico } = req.body;
-  await db.query('INSERT INTO agendamentos (veiculo_id, data_agendamento, servico) VALUES (?, ?, ?)',
-    [veiculo_id, data_agendamento.replace('T', ' '), servico]);
-  res.redirect('/agendamentos');
+  await db.query(
+    "INSERT INTO agendamentos (veiculo_id, data_agendamento, servico) VALUES (?, ?, ?)",
+    [veiculo_id, data_agendamento.replace("T", " "), servico],
+  );
+  res.redirect("/agendamentos");
 });
 ```
 
@@ -1030,47 +1174,53 @@ app.post('/agendamentos', async (req, res) => {
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Oficina - Agendamentos</title>
-</head>
-<body>
-  <h1>Agendamentos</h1>
-  <p><a href="/principal">Voltar</a></p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oficina - Agendamentos</title>
+  </head>
+  <body>
+    <h1>Agendamentos</h1>
+    <p><a href="/principal">Voltar</a></p>
 
-  <table border="1">
-    <tr><th>Data</th><th>Servico</th><th>Veiculo</th><th>Cliente</th></tr>
-    {{#agendamentos}}
-    <tr>
-      <td>{{data_br}}</td>
-      <td>{{servico}}</td>
-      <td>{{placa}} - {{marca}} {{modelo}}</td>
-      <td>{{cliente_nome}}</td>
-    </tr>
-    {{/agendamentos}}
-  </table>
+    <table border="1">
+      <tr>
+        <th>Data</th>
+        <th>Servico</th>
+        <th>Veiculo</th>
+        <th>Cliente</th>
+      </tr>
+      {{#agendamentos}}
+      <tr>
+        <td>{{data_br}}</td>
+        <td>{{servico}}</td>
+        <td>{{placa}} - {{marca}} {{modelo}}</td>
+        <td>{{cliente_nome}}</td>
+      </tr>
+      {{/agendamentos}}
+    </table>
 
-  <h2>Cadastrar agendamento</h2>
-  <form method="POST" action="/agendamentos">
-    <select name="veiculo_id" required>
-      <option value="">Selecione o veiculo</option>
-      {{#veiculos}}
-      <option value="{{id}}">{{placa}} - {{marca}} {{modelo}}</option>
-      {{/veiculos}}
-    </select>
-    <input type="datetime-local" name="data_agendamento" required />
-    <input type="text" name="servico" placeholder="Servico" />
-    <button>Cadastrar</button>
-  </form>
-</body>
+    <h2>Cadastrar agendamento</h2>
+    <form method="POST" action="/agendamentos">
+      <select name="veiculo_id" required>
+        <option value="">Selecione o veiculo</option>
+        {{#veiculos}}
+        <option value="{{id}}">{{placa}} - {{marca}} {{modelo}}</option>
+        {{/veiculos}}
+      </select>
+      <input type="datetime-local" name="data_agendamento" required />
+      <input type="text" name="servico" placeholder="Servico" />
+      <button>Cadastrar</button>
+    </form>
+  </body>
 </html>
 ```
 
 **Mostrar o JOIN em duas etapas** (peça para os alunos explicarem a cadeia):
 `agendamentos → veiculos (veiculo_id) → clientes (cliente_id)`.
-O agendamento **não guarda** o cliente: chegamos nele *através do veículo*. Releia o DER da etapa 0.
+O agendamento **não guarda** o cliente: chegamos nele _através do veículo_. Releia o DER da etapa 0.
 
 **Pontos para discutir**
+
 - `agendamentos.*` traz todas as colunas do agendamento; as demais são escolhidas uma a uma.
 - `clientes.nome AS cliente_nome`: apelido para não confundir com outro `nome`.
 - Por que o front usa `{{cliente_nome}}` e não `{{nome}}`? Por causa do apelido.
@@ -1088,7 +1238,12 @@ O agendamento **não guarda** o cliente: chegamos nele *através do veículo*. R
 <td>
   <form method="POST" action="/agendamentos/{{id}}">
     <input type="hidden" name="_method" value="PUT" />
-    <input type="datetime-local" name="data_agendamento" value="{{data_input}}" required />
+    <input
+      type="datetime-local"
+      name="data_agendamento"
+      value="{{data_input}}"
+      required
+    />
     <button>Salvar</button>
   </form>
 </td>
@@ -1103,20 +1258,22 @@ O agendamento **não guarda** o cliente: chegamos nele *através do veículo*. R
 **Back:**
 
 ```js
-app.put('/agendamentos/:id', async (req, res) => {
-  await db.query('UPDATE agendamentos SET data_agendamento = ? WHERE id = ?',
-    [req.body.data_agendamento.replace('T', ' '), req.params.id]);
-  res.redirect('/agendamentos');
+app.put("/agendamentos/:id", async (req, res) => {
+  await db.query("UPDATE agendamentos SET data_agendamento = ? WHERE id = ?", [
+    req.body.data_agendamento.replace("T", " "),
+    req.params.id,
+  ]);
+  res.redirect("/agendamentos");
 });
 
-app.delete('/agendamentos/:id', async (req, res) => {
-  await excluir(res, 'agendamentos', req.params.id, '/agendamentos', '');
+app.delete("/agendamentos/:id", async (req, res) => {
+  await excluir(res, "agendamentos", req.params.id, "/agendamentos", "");
 });
 ```
 
 (Agendamento é a ponta da cadeia: nada depende dele, então a exclusão não esbarra em vínculo; por isso o motivo é vazio.)
 
-**Ordem para limpar dados vinculados:** agendamento → veículo → cliente. É a ordem *inversa* da criação, porque cada item depende do anterior. Boa pergunta: *"Para apagar o cliente Maria, o que preciso apagar antes?"*
+**Ordem para limpar dados vinculados:** agendamento → veículo → cliente. É a ordem _inversa_ da criação, porque cada item depende do anterior. Boa pergunta: _"Para apagar o cliente Maria, o que preciso apagar antes?"_
 
 Altere a data de um agendamento e mostre a lista **reordenando sozinha**. Confirme no MySQL. ✅ RN08
 
@@ -1136,6 +1293,7 @@ Percorra a tabela da seção 1 marcando ✅ em cada regra. Faça o **teste de po
 6. Sair → tentar voltar com a seta do navegador / acessar `/clientes` → login
 
 **Retrospectiva (perguntas abertas):**
+
 - Quais regras de negócio viraram **SQL**? Quais viraram **código JS**? Quais viraram **HTML**?
 - O que falta para este sistema ir para produção? (ver seção 11)
 
@@ -1147,36 +1305,36 @@ Mostre o `README.md` (como rodar) e passe para o **Anexo B**: a receita que os a
 
 Pontos reais do código que valem como conversa sobre maturidade de software:
 
-| Ponto | Situação atual | Melhoria |
-|---|---|---|
-| **Erros assíncronos** | Express 4 não captura erro em `async`. As **exclusões** já têm `try/catch` (função `excluir`), mas as demais rotas (`INSERT`, `UPDATE`, `SELECT`) ainda podem derrubar o processo em caso de falha de SQL | `try/catch` em todas as rotas, `express-async-errors` ou migrar para Express 5 |
-| **Exclusão com vínculos** | FK impede apagar cliente com veículo; hoje mostramos uma mensagem | `ON DELETE CASCADE` (cuidado: apaga em cascata) / exclusão lógica (coluna `ativo`) |
-| **IV fixo** | Mesmo IV para todos os CPFs: CPFs iguais geram cifras iguais | IV aleatório por registro, guardado junto do valor |
-| **Chave no `.env`** | Chave de exemplo no `.env.example` | Gestor de segredos; chave forte e rotacionável |
-| **Cookie** | Sem flag `secure`/`sameSite` | `secure: true` com HTTPS, `sameSite: 'strict'` (também mitiga CSRF) |
-| **Validação** | Sem validar formato de CPF/placa/data | Validar no servidor |
-| **Conflito de horários** | Permite dois agendamentos no mesmo horário | Regra de negócio extra (o problema original da oficina!) |
-| **Cliente na tabela de veículos** | Mostra só o `cliente_id` | `JOIN` para mostrar o nome |
-| **Estrutura** | Back em um só arquivo (didático) | Separar em rotas / serviços / repositórios |
+| Ponto                             | Situação atual                                                                                                                                                                                            | Melhoria                                                                           |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Erros assíncronos**             | Express 4 não captura erro em `async`. As **exclusões** já têm `try/catch` (função `excluir`), mas as demais rotas (`INSERT`, `UPDATE`, `SELECT`) ainda podem derrubar o processo em caso de falha de SQL | `try/catch` em todas as rotas, `express-async-errors` ou migrar para Express 5     |
+| **Exclusão com vínculos**         | FK impede apagar cliente com veículo; hoje mostramos uma mensagem                                                                                                                                         | `ON DELETE CASCADE` (cuidado: apaga em cascata) / exclusão lógica (coluna `ativo`) |
+| **IV fixo**                       | Mesmo IV para todos os CPFs: CPFs iguais geram cifras iguais                                                                                                                                              | IV aleatório por registro, guardado junto do valor                                 |
+| **Chave no `.env`**               | Chave de exemplo no `.env.example`                                                                                                                                                                        | Gestor de segredos; chave forte e rotacionável                                     |
+| **Cookie**                        | Sem flag `secure`/`sameSite`                                                                                                                                                                              | `secure: true` com HTTPS, `sameSite: 'strict'` (também mitiga CSRF)                |
+| **Validação**                     | Sem validar formato de CPF/placa/data                                                                                                                                                                     | Validar no servidor                                                                |
+| **Conflito de horários**          | Permite dois agendamentos no mesmo horário                                                                                                                                                                | Regra de negócio extra (o problema original da oficina!)                           |
+| **Cliente na tabela de veículos** | Mostra só o `cliente_id`                                                                                                                                                                                  | `JOIN` para mostrar o nome                                                         |
+| **Estrutura**                     | Back em um só arquivo (didático)                                                                                                                                                                          | Separar em rotas / serviços / repositórios                                         |
 
 ---
 
 ## 12. Cola rápida para o professor (cronograma)
 
-| Etapa | Tema | Tempo |
-|---|---|---|
-| 0 | Entender o problema + requisitos + DER | 20 min |
-| 1 | Projeto Node, `.env` | 15 min |
-| 2 | Banco de dados + gerador | 30 min |
-| 3 | Hash × criptografia | 10 min |
-| 4 | Back e front separados, `{{marcadores}}`, verbos HTTP | 35 min |
-| 5 | Login + JWT + middleware | 35 min |
-| 6 | Tela principal | 10 min |
-| 7 | Clientes (busca, cadastro, edição, exclusão) | 45 min |
-| 8 | Veículos | 30 min |
-| 9 | Agendamentos | 35 min |
-| 10 | Fechamento | 15 min |
-| | **Total** | **≈ 4 h 40** (+ pausas) |
+| Etapa | Tema                                                  | Tempo                   |
+| ----- | ----------------------------------------------------- | ----------------------- |
+| 0     | Entender o problema + requisitos + DER                | 20 min                  |
+| 1     | Projeto Node, `.env`                                  | 15 min                  |
+| 2     | Banco de dados + gerador                              | 30 min                  |
+| 3     | Hash × criptografia                                   | 10 min                  |
+| 4     | Back e front separados, `{{marcadores}}`, verbos HTTP | 35 min                  |
+| 5     | Login + JWT + middleware                              | 35 min                  |
+| 6     | Tela principal                                        | 10 min                  |
+| 7     | Clientes (busca, cadastro, edição, exclusão)          | 45 min                  |
+| 8     | Veículos                                              | 30 min                  |
+| 9     | Agendamentos                                          | 35 min                  |
+| 10    | Fechamento                                            | 15 min                  |
+|       | **Total**                                             | **≈ 4 h 40** (+ pausas) |
 
 > Se o tempo apertar: faça o **cadastro de veículos** e o **cadastro de agendamentos** apenas com colar-e-explicar (são o mesmo padrão da etapa 7) e concentre o tempo ao vivo em **login/JWT**, **criptografia do CPF**, **busca** e **JOIN**.
 
@@ -1184,22 +1342,22 @@ Pontos reais do código que valem como conversa sobre maturidade de software:
 
 ## 13. Solução de problemas (para o professor)
 
-| Sintoma | Causa provável | Como resolver |
-|---|---|---|
+| Sintoma                                                              | Causa provável                                                                                                   | Como resolver                                                                                                          |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | Excluir/editar responde **`{"erro":"Método não permitido."}`** (405) | Outro servidor (ex.: `server.js` antigo) está ocupando a porta 3000, então o `app.js` novo nunca recebe o pedido | Descubra o processo: `netstat -ano \| findstr :3000`; encerre-o: `taskkill /PID <número> /F`; rode `npm start` de novo |
-| `Error: listen EADDRINUSE: address already in use :::3000` | Já existe algo na porta 3000 | Mesma solução acima, ou use outra porta (`PORT=3001` no `.env`) |
-| Terminal mostra `ER_ROW_IS_REFERENCED_2` e o servidor para | Exclusão de registro com vínculo, sem `try/catch` | Use a função `excluir` (etapa 7) |
-| Botão Excluir/Salvar faz "nada" ou dá `Cannot POST` | Middleware `_method` fora de ordem ou faltando o campo oculto `_method` no `.html` | Confira a ordem (`urlencoded` → `cookieParser` → `_method` → rotas) e o `<input type="hidden" name="_method">` |
-| Tela volta sempre para o login | Token ausente, vencido ou `JWT_SECRET` mudou | Entre de novo; confira o `.env` |
-| Login sempre diz "E-mail ou senha invalidos" | Banco sem os usuários, ou hash gravado errado | Recarregue o banco (`DROP DATABASE oficina;` + `mysql ... < database/script.sql`) |
-| `ECONNREFUSED` ou `Access denied` ao subir | MySQL desligado ou `.env` com usuário/senha errados | Ligue o MySQL; confira `DB_USER`, `DB_PASSWORD`, `DB_NAME` |
-| `Invalid key length` / `Invalid IV length` | `CRIPTO_CHAVE` não tem 32 caracteres ou `CRIPTO_IV` não tem 16 | Ajuste o `.env` |
-| CPF aparece ilegível na tela, ou erro ao listar clientes | Registro gravado com outra chave, ou CPF salvo sem criptografar | Regenere o script (`npm run gerar-script`) e recarregue o banco |
-| Mudei o `app.js` e nada mudou | O Node não recarrega sozinho | Reinicie o servidor (`Ctrl+C` e `npm start`). Mudanças só nos `.html` dispensam reinício |
-| Mudei o `.env` e nada mudou | O `.env` só é lido na inicialização | Reinicie o servidor |
-| Campo vazio de ano dá erro no MySQL | `''` não é aceito em `INT` | Use `ano \|\| null` |
-| Aparece `{{nome}}` literal na tela | O `.html` foi aberto direto do disco, ou o nome do marcador não bate com a chave enviada em `mostrar(...)` | Acesse sempre por `http://localhost:3000`; confira os nomes |
-| Marcador some / fica vazio | Nome diferente do enviado pelo back (ex.: `{{cliente_nome}}` × `nome`) | Compare o `AS` do SQL e o objeto passado ao `mostrar` |
+| `Error: listen EADDRINUSE: address already in use :::3000`           | Já existe algo na porta 3000                                                                                     | Mesma solução acima, ou use outra porta (`PORT=3001` no `.env`)                                                        |
+| Terminal mostra `ER_ROW_IS_REFERENCED_2` e o servidor para           | Exclusão de registro com vínculo, sem `try/catch`                                                                | Use a função `excluir` (etapa 7)                                                                                       |
+| Botão Excluir/Salvar faz "nada" ou dá `Cannot POST`                  | Middleware `_method` fora de ordem ou faltando o campo oculto `_method` no `.html`                               | Confira a ordem (`urlencoded` → `cookieParser` → `_method` → rotas) e o `<input type="hidden" name="_method">`         |
+| Tela volta sempre para o login                                       | Token ausente, vencido ou `JWT_SECRET` mudou                                                                     | Entre de novo; confira o `.env`                                                                                        |
+| Login sempre diz "E-mail ou senha invalidos"                         | Banco sem os usuários, ou hash gravado errado                                                                    | Recarregue o banco (`DROP DATABASE oficina;` + `mysql ... < database/script.sql`)                                      |
+| `ECONNREFUSED` ou `Access denied` ao subir                           | MySQL desligado ou `.env` com usuário/senha errados                                                              | Ligue o MySQL; confira `DB_USER`, `DB_PASSWORD`, `DB_NAME`                                                             |
+| `Invalid key length` / `Invalid IV length`                           | `CRIPTO_CHAVE` não tem 32 caracteres ou `CRIPTO_IV` não tem 16                                                   | Ajuste o `.env`                                                                                                        |
+| CPF aparece ilegível na tela, ou erro ao listar clientes             | Registro gravado com outra chave, ou CPF salvo sem criptografar                                                  | Regenere o script (`npm run gerar-script`) e recarregue o banco                                                        |
+| Mudei o `app.js` e nada mudou                                        | O Node não recarrega sozinho                                                                                     | Reinicie o servidor (`Ctrl+C` e `npm start`). Mudanças só nos `.html` dispensam reinício                               |
+| Mudei o `.env` e nada mudou                                          | O `.env` só é lido na inicialização                                                                              | Reinicie o servidor                                                                                                    |
+| Campo vazio de ano dá erro no MySQL                                  | `''` não é aceito em `INT`                                                                                       | Use `ano \|\| null`                                                                                                    |
+| Aparece `{{nome}}` literal na tela                                   | O `.html` foi aberto direto do disco, ou o nome do marcador não bate com a chave enviada em `mostrar(...)`       | Acesse sempre por `http://localhost:3000`; confira os nomes                                                            |
+| Marcador some / fica vazio                                           | Nome diferente do enviado pelo back (ex.: `{{cliente_nome}}` × `nome`)                                           | Compare o `AS` do SQL e o objeto passado ao `mostrar`                                                                  |
 
 **Dica de ouro para a live:** quando algo "não funciona do nada", antes de procurar bug no código, confirme **qual processo está respondendo** na porta e **leia o terminal** onde o servidor roda. A maioria dos erros aparece lá.
 
@@ -1209,40 +1367,44 @@ Pontos reais do código que valem como conversa sobre maturidade de software:
 
 A **ordem** do arquivo faz parte da lógica. É assim que o `app.js` do repositório está organizado:
 
-| # | Seção | Por que nesta posição |
-|---|---|---|
-| 1 | `require('dotenv').config()` e demais `require` | O `.env` precisa ser lido antes de qualquer `process.env` |
-| 2 | `const app = express()` | Cria o servidor |
-| 3 | `express.urlencoded` | Cria o `req.body` (precisa vir antes de quem usa `req.body`) |
-| 4 | `cookieParser()` | Cria o `req.cookies` (precisa vir antes do porteiro) |
-| 5 | Middleware `_method` | Depende do `req.body`; precisa vir antes das rotas |
-| 6 | `mysql.createPool` (`db`) | Conexão usada por todas as rotas |
-| 7 | Funções de apoio: `mostrar`, `criptografar`, `descriptografar`, `excluir` | Usadas pelas rotas |
-| 8 | **Rotas públicas:** `GET /`, `POST /login`, `POST /sair` | Antes do porteiro: não exigem login |
-| 9 | **Porteiro** (`jwt.verify`) | Tudo abaixo exige login |
-| 10 | `GET /principal` | Protegida |
-| 11 | Clientes: `GET`, `POST`, `PUT`, `DELETE` | Protegidas |
-| 12 | Veículos: `mostrarVeiculos` + `GET`, `POST`, `PUT`, `DELETE` | Protegidas |
-| 13 | Agendamentos: `GET`, `POST`, `PUT`, `DELETE` | Protegidas |
-| 14 | `app.listen` | Sempre por último |
+| #   | Seção                                                                     | Por que nesta posição                                        |
+| --- | ------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| 1   | `require('dotenv').config()` e demais `require`                           | O `.env` precisa ser lido antes de qualquer `process.env`    |
+| 2   | `const app = express()`                                                   | Cria o servidor                                              |
+| 3   | `express.urlencoded`                                                      | Cria o `req.body` (precisa vir antes de quem usa `req.body`) |
+| 4   | `cookieParser()`                                                          | Cria o `req.cookies` (precisa vir antes do porteiro)         |
+| 5   | Middleware `_method`                                                      | Depende do `req.body`; precisa vir antes das rotas           |
+| 6   | `mysql.createPool` (`db`)                                                 | Conexão usada por todas as rotas                             |
+| 7   | Funções de apoio: `mostrar`, `criptografar`, `descriptografar`, `excluir` | Usadas pelas rotas                                           |
+| 8   | **Rotas públicas:** `GET /`, `POST /login`, `POST /sair`                  | Antes do porteiro: não exigem login                          |
+| 9   | **Porteiro** (`jwt.verify`)                                               | Tudo abaixo exige login                                      |
+| 10  | `GET /principal`                                                          | Protegida                                                    |
+| 11  | Clientes: `GET`, `POST`, `PUT`, `DELETE`                                  | Protegidas                                                   |
+| 12  | Veículos: `mostrarVeiculos` + `GET`, `POST`, `PUT`, `DELETE`              | Protegidas                                                   |
+| 13  | Agendamentos: `GET`, `POST`, `PUT`, `DELETE`                              | Protegidas                                                   |
+| 14  | `app.listen`                                                              | Sempre por último                                            |
 
 ## Anexo B – Receita para a avaliação (outro tema, mesma arquitetura)
 
 Na avaliação o enunciado será diferente (outra empresa, outras entidades), mas o caminho é o mesmo. Use esta receita:
 
 ### Passo 1 – Analisar o enunciado (substantivos e verbos)
+
 - Substantivos → **tabelas** (ex.: usuário, cliente, produto, pedido).
 - Verbos → **funcionalidades** (login, buscar, editar, listar ordenado...).
 - Cada **regra de negócio** → monte uma tabela "regra → onde implementar" (como a seção 1).
 
 ### Passo 2 – Documentar
+
 - `docs/requisitos.md`: RF01, RF02... (um por funcionalidade) + requisitos de infraestrutura.
 - `docs/der.md`: DER em Mermaid. Confira a cardinalidade (`||--o{` = um para muitos).
 
 ### Passo 3 – Projeto Node
+
 `npm init -y` → instalar `express mysql2 bcryptjs jsonwebtoken dotenv cookie-parser mustache` → `.env`, `.env.example`, `.gitignore` (`node_modules/` e `.env`) → scripts `start` e `gerar-script`.
 
 ### Passo 4 – Banco de dados
+
 1. Tabelas sem dependência primeiro, depois as que têm `FOREIGN KEY`.
 2. Dado sensível (CPF etc.) → `VARCHAR(255)` e **criptografado** pelo `gerar-script.js`.
 3. Senha → **hash bcrypt**, também pelo `gerar-script.js`.
@@ -1250,16 +1412,21 @@ Na avaliação o enunciado será diferente (outra empresa, outras entidades), ma
 5. Gere (`npm run gerar-script`) e carregue (`mysql -u root -p < database/script.sql`).
 
 ### Passo 5 – Esqueleto do `app.js`
+
 Copie a estrutura do Anexo A: requires → `urlencoded` → `cookieParser` → `_method` → `db` → `mostrar`/`criptografar`/`descriptografar`/`excluir` → `listen`.
 
 ### Passo 6 – Login e proteção
+
 `login.html` + `GET /` + `POST /login` (`bcrypt.compare`, `jwt.sign` com `expiresIn`, cookie `httpOnly`) + `POST /sair` + **porteiro**. Teste: senha errada, acesso sem login, expiração.
 
 ### Passo 7 – Tela principal
+
 `principal.html` com `{{nome}}`, links para cada recurso e botão Sair (`POST /sair`).
 
 ### Passo 8 – Um recurso de cada vez (sempre na mesma ordem)
+
 Para **cada entidade** repita:
+
 1. `paginas/<recurso>.html` com a tabela (`{{#lista}}...{{/lista}}`).
 2. `GET /<recurso>` buscando no banco e chamando `mostrar`.
 3. Formulário de cadastro + `POST /<recurso>` (`INSERT`, criptografar o que for sensível, `redirect`).
@@ -1268,18 +1435,20 @@ Para **cada entidade** repita:
 6. Testar no navegador **e** conferir no MySQL.
 
 ### Passo 9 – Regras especiais (mapeie cada uma)
-| Se o enunciado pede... | Use... |
-|---|---|
-| Busca por termo | `<form method="GET">` + `WHERE campo LIKE ?` com `%${busca}%` |
-| Listar com dados de outra tabela | `JOIN` (e `AS` para apelidar colunas repetidas) |
-| Listar ordenado | `ORDER BY coluna` (`DESC` para decrescente) |
-| Associar a outro registro (ex.: veículo → cliente) | `<select>` alimentado por um `SELECT` + `NOT NULL` + validação no back |
-| Alterar só um campo | `UPDATE tabela SET campo = ? WHERE id = ?` + formulário pequeno com `_method=PUT` |
-| Dado pessoal protegido | `criptografar()` ao gravar, `descriptografar()` ao exibir |
-| Mensagem de erro | Passar `{ erro: '...' }` para `mostrar` e usar `{{erro}}` no `.html` |
-| Token com expiração | `jwt.sign(..., { expiresIn: '1h' })` |
+
+| Se o enunciado pede...                             | Use...                                                                            |
+| -------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Busca por termo                                    | `<form method="GET">` + `WHERE campo LIKE ?` com `%${busca}%`                     |
+| Listar com dados de outra tabela                   | `JOIN` (e `AS` para apelidar colunas repetidas)                                   |
+| Listar ordenado                                    | `ORDER BY coluna` (`DESC` para decrescente)                                       |
+| Associar a outro registro (ex.: veículo → cliente) | `<select>` alimentado por um `SELECT` + `NOT NULL` + validação no back            |
+| Alterar só um campo                                | `UPDATE tabela SET campo = ? WHERE id = ?` + formulário pequeno com `_method=PUT` |
+| Dado pessoal protegido                             | `criptografar()` ao gravar, `descriptografar()` ao exibir                         |
+| Mensagem de erro                                   | Passar `{ erro: '...' }` para `mostrar` e usar `{{erro}}` no `.html`              |
+| Token com expiração                                | `jwt.sign(..., { expiresIn: '1h' })`                                              |
 
 ### Passo 10 – Checklist antes de entregar
+
 - [ ] O `app.js` sobe sem erro e **todas** as telas abrem.
 - [ ] Cada regra de negócio do enunciado foi testada **no navegador**.
 - [ ] Senha com hash e dado sensível criptografado **no banco** (confira com `SELECT`).
@@ -1291,6 +1460,7 @@ Para **cada entidade** repita:
 - [ ] `README.md` explica como rodar (banco, `.env`, `npm install`, `npm start`) e informa um usuário de teste.
 
 ### Erros que mais custam pontos
+
 1. Rotas públicas declaradas **depois** do porteiro (viram protegidas) ou rotas protegidas declaradas **antes** dele (ficam abertas).
 2. Esquecer `criptografar()` no `UPDATE`.
 3. Nome do `name=""` no formulário diferente do usado em `req.body`.

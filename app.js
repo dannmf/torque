@@ -24,6 +24,8 @@ app.use((req, res, next) => {
   next();
 });
 
+// "Estoque" de conexoes com o MySQL, reaproveitadas pelas rotas. dateStrings
+// faz as colunas DATETIME chegarem como texto, nao como objeto Date do Node.
 const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -32,11 +34,15 @@ const db = mysql.createPool({
   dateStrings: true,
 });
 
+// Le paginas/<nome>.html, troca os {{marcadores}} pelos dados (com escape
+// automatico contra XSS) e devolve o HTML pronto pra mandar ao navegador.
 function mostrar(nome, dados = {}) {
   const arquivo = path.join(__dirname, 'paginas', `${nome}.html`);
   return Mustache.render(fs.readFileSync(arquivo, 'utf8'), dados);
 }
 
+// Criptografia reversivel (AES-256-CBC) do CPF [RN03]: grava criptografado
+// no banco, descriptografa so na hora de mostrar na tela.
 function criptografar(texto) {
   const cifra = crypto.createCipheriv('aes-256-cbc', process.env.CRIPTO_CHAVE, process.env.CRIPTO_IV);
   return cifra.update(texto, 'utf8', 'hex') + cifra.final('hex');
@@ -46,6 +52,9 @@ function descriptografar(texto) {
   return decifra.update(texto, 'hex', 'utf8') + decifra.final('utf8');
 }
 
+// Exclui um registro. Sem o try/catch, se o MySQL recusar por vinculo de
+// chave estrangeira (ex.: cliente com veiculo), o Express 4 nao captura o
+// erro numa funcao async e derruba o servidor inteiro.
 async function excluir(res, tabela, id, volta, motivo) {
   try {
     await db.query(`DELETE FROM ${tabela} WHERE id = ?`, [id]);
@@ -67,6 +76,8 @@ app.post('/login', async (req, res) => {
   const [usuarios] = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
   const usuario = usuarios[0];
 
+  // Mesma mensagem para e-mail inexistente ou senha errada [RN02], e
+  // bcrypt.compare confere a senha sem nunca descobrir a original.
   if (!usuario || !(await bcrypt.compare(senha, usuario.senha))) {
     return res.send(mostrar('login', { erro: 'E-mail ou senha invalidos' }));
   }
@@ -82,6 +93,8 @@ app.post('/sair', (req, res) => {
   res.redirect('/');
 });
 
+// "Porteiro": tudo que vier abaixo desta linha exige login. jwt.verify falha
+// (e cai no catch) se o token nao existir, for invalido ou tiver expirado.
 app.use((req, res, next) => {
   try {
     req.usuario = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
@@ -128,6 +141,9 @@ app.delete('/clientes/:id', async (req, res) => {
   await excluir(res, 'clientes', req.params.id, '/clientes', 'o cliente possui veiculos cadastrados');
 });
 
+// Busca os dados e preenche a pagina. E uma funcao (nao so a rota GET)
+// porque tambem e chamada pelas validacoes do POST/PUT pra reexibir a
+// pagina com uma mensagem de erro, sem repetir os dois SELECT.
 async function mostrarVeiculos(req, res, erro = '') {
   const [veiculos] = await db.query('SELECT * FROM veiculos');
   const [listaClientes] = await db.query('SELECT id, nome FROM clientes');
@@ -174,6 +190,8 @@ app.delete('/veiculos/:id', async (req, res) => {
 });
 
 app.get('/agendamentos', async (req, res) => {
+  // agendamentos so guarda veiculo_id; chegamos no cliente atraves do
+  // veiculo (agendamentos -> veiculos -> clientes) [RN07].
   const [lista] = await db.query(
     `SELECT agendamentos.*, veiculos.placa, veiculos.marca, veiculos.modelo, clientes.nome AS cliente_nome
      FROM agendamentos

@@ -1,5 +1,5 @@
--- Script gerado automaticamente por gerar-script.js
--- Nao edite o CPF ou a senha a mao: use "npm run gerar-script"
+-- O hash da senha e o CPF criptografado abaixo foram gerados com "npm run gerar-valores"
+-- (nao e possivel digitar esses valores a mao: veja gerar-valores.js)
 
 CREATE DATABASE IF NOT EXISTS oficina;
 USE oficina;
